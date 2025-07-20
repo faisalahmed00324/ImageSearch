@@ -28,8 +28,10 @@ Put your images in the folder specified by `IMAGE_FOLDER` in [`cfg.py`](py-scrip
 
 python [build_index.py]
 
+### 2. Add new index
 Add a new image
 python [add_image.py] <image_path> [image_id]
 
+### 3. Search image
 Search for similar images
 python [search.py] <query_image_path> --k 10
