@@ -33,7 +33,8 @@ for f in sorted(os.listdir(cfg.IMAGE_FOLDER)):
     if f.lower().endswith((".jpg",".jpeg",".png",".webp",".bmp",".tif",".tiff")):
         p   = os.path.join(cfg.IMAGE_FOLDER, f)
         vec = embed(p)
-        _id = col.insert_one({"image_path": p,
+        _id = col.insert_one({"imageId": os.path.splitext(f)[0],
+                              "image_path": p,
                               "vector": vec.tolist(),
                               "metadata": {}}).inserted_id
         ids.append(str(_id))
