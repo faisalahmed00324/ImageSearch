@@ -32,7 +32,47 @@ The goal is to explore how computer vision and vector search can be combined to 
                        v
                 Ranked Results
 ```
+## Technical Decisions
 
+### 1. Why DINOv2?
+
+DINOv2 was selected as the image feature extraction model because it produces meaningful visual representations that capture semantic and visual similarities between images.
+
+The ViT-S/14 model generates a 384-dimensional embedding for each image. These embeddings allow images to be compared based on their visual content rather than filenames or manually assigned tags.
+
+### 2. Why FAISS IndexFlatIP?
+
+FAISS was chosen for efficient similarity searching across image embeddings.
+
+The project uses `IndexFlatIP`, which performs exact inner-product similarity comparisons. This provides accurate similarity rankings without introducing the complexity of approximate nearest-neighbor indexing.
+
+### 3. Why Normalize Embeddings?
+
+All embeddings are L2-normalized before similarity comparison.
+
+With normalized vectors, inner-product similarity is equivalent to cosine similarity:
+
+\[
+\operatorname{similarity}(A,B)=A\cdot B
+\]
+
+This makes it possible to rank images based on the direction of their embedding vectors rather than their magnitude.
+
+### 4. Why MongoDB?
+
+MongoDB stores image metadata and their corresponding embeddings.
+
+FAISS handles vector similarity searches, while MongoDB maintains the associated image information. This separation allows the project to retrieve image metadata after identifying similar vectors.
+
+### 5. Current Limitations
+
+- This is a proof-of-concept implementation.
+- FAISS index and MongoDB records require synchronization.
+- The project currently uses exact similarity search rather than approximate indexing.
+- There is no web interface or REST API.
+- Index persistence and recovery require additional consideration for larger datasets.
+
+  
 ### Technology Stack
 
 | Component | Technology |
