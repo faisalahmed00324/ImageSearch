@@ -64,15 +64,6 @@ MongoDB stores image metadata and their corresponding embeddings.
 
 FAISS handles vector similarity searches, while MongoDB maintains the associated image information. This separation allows the project to retrieve image metadata after identifying similar vectors.
 
-### 5. Current Limitations
-
-- This is a proof-of-concept implementation.
-- FAISS index and MongoDB records require synchronization.
-- The project currently uses exact similarity search rather than approximate indexing.
-- There is no web interface or REST API.
-- Index persistence and recovery require additional consideration for larger datasets.
-
-  
 ### Technology Stack
 
 | Component | Technology |
@@ -218,7 +209,8 @@ Current implementation characteristics:
 - Uses local FAISS index and MongoDB storage.
 - Uses DINOv2 ViT-S/14 as the image embedding model.
 - Does not currently provide a web-based user interface or REST API.
-- Requires the FAISS index and MongoDB ID mapping to remain synchronized.
+- Requires the FAISS index, MongoDB records, and MongoDB ID mapping to remain synchronized.
+- Index persistence and recovery require additional consideration for larger datasets.
 
 ## Future Improvements
 
