@@ -124,7 +124,7 @@ Generated index files are created when the indexing scripts run.
 Install the Python dependencies:
 
 ```bash
-pip install torch torchvision timm faiss-cpu numpy pillow pymongo
+pip install -r requirements.txt
 ```
 
 Start MongoDB and configure the connection and storage paths in:
