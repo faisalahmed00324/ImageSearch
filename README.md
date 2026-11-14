@@ -133,6 +133,8 @@ This process:
 - Builds and saves the FAISS similarity index.
 - Saves the MongoDB ID mapping.
 
+Bulk-indexed images use their filename without the extension as `imageId` (for example, `example.jpg` becomes `example`), which is included in search results.
+
 **Important:** The current bulk indexing script clears the configured MongoDB collection before rebuilding the index. Use it only with a dedicated POC dataset.
 
 ### 2. Add an individual image
